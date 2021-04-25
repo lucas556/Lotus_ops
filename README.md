@@ -1,5 +1,16 @@
 # Lotus 运维
 
+## 常用命令
+
+### 查询类
+
+```
+查询 Miner 信息 ：lotus-miner info
+查询 Worker 状态 ：lotus-miner sealing workers
+查询 任务状态 ： lotus-miner sealing jobs
+
+```
+
 ## 常见问题处理
 
 ```
