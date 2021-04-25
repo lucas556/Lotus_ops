@@ -18,7 +18,7 @@ EOF
 apt-get update
 
 # 安装依赖
-sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc gcc git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor nfs-common
+sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc gcc numactl git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor nfs-common
 
 # -----------------------------时钟校验------------------------------------------------
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
