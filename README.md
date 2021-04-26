@@ -11,6 +11,19 @@
 
 ```
 
+### 操作类
+
+#### 设置 软阵列 Raid0
+```
+fdisk /dev/sda     // g n 回车 回车 wq
+fdisk /dev/sdb     // g n 回车 回车 wq
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sdb1
+mdadm -C -a yes /dev/md001 -l 0 -n 2 /dev/sd{a,b}1
+```
+
+
+
 ## 常见问题处理
 
 ```
