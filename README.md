@@ -2,6 +2,22 @@
 
 ## 常用命令
 
+### 环境变量
+
+```
+#export LOTUS_PATH="/lotusdaemon"
+export WORKER_PATH="/lotusworker"
+export FIL_PROOFS_PARAMETER_CACHE="/proof"
+export IPFS_GATEWAY="https://proof-parameters.s3.cn-south-1.jdcloud-oss.com/ipfs/"
+
+export BELLMAN_CUSTOM_GPU="GeForce RTX 3090:10496, GeForce RTX 3080:8704"
+
+export FIL_PROOFS_MAXIMIZE_CACHING=1
+unset USE_EXP_CACHE
+export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1
+export FIL_PROOFS_USE_GPU_TREE_BUILDER=1
+```
+
 ### 查询类
 
 ```
