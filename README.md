@@ -5,8 +5,8 @@
 ### 环境变量
 
 ```
-#export LOTUS_PATH="/lotusdaemon"
-export WORKER_PATH="/lotusworker"
+export LOTUS_PATH="/md0/daemon"
+export WORKER_PATH="/md0/worker"
 export FIL_PROOFS_PARAMETER_CACHE="/proof"
 export IPFS_GATEWAY="https://proof-parameters.s3.cn-south-1.jdcloud-oss.com/ipfs/"
 
