@@ -15,6 +15,10 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted univer
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
 EOF
 
+#----------------------设置DNS-------------------------------
+echo "nameserver 119.29.29.29" >> /etc/resolv.conf
+echo "nameserver 180.76.76.76" >> /etc/resolv.conf
+
 apt-get update
 
 # 安装依赖
