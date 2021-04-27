@@ -29,6 +29,11 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate ntp.aliyun.com
 # -----------------------------时钟校验结束------------------------------------------------
 
+#----------------------------禁用nouveau---------------------------------
+echo "blacklist nouveau" >> /etc/modprobe.d/blacklist_nouveau.conf
+echo "options nouveau modeset=0" >> /etc/modprobe.d/blacklist_nouveau.conf
+sudo update-initramfs -u
+
 # -----------------------------CPU性能模式------------------------------------------------
 sudo cpufreq-set -g performance     # 重启后无效;必须安装cpufrequtils
 echo "devices/system/cpu/cpu0/cpufreq/scaling_governor = performance" >> /etc/sysfs.conf  # 永久;必须安装sysfsutils
