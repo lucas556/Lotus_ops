@@ -18,11 +18,12 @@ EOF
 apt-get update
 
 # 安装依赖
-sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc gcc numactl git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor nfs-common
+sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc gcc numactl git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor ntpdate nfs-common
 
 # -----------------------------时钟校验------------------------------------------------
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ntpdate ntp.aliyun.com
+# -----------------------------时钟校验结束------------------------------------------------
 
 # -----------------------------CPU性能模式------------------------------------------------
 sudo cpufreq-set -g performance     # 重启后无效;必须安装cpufrequtils
@@ -35,8 +36,6 @@ echo "* hard nofile 1048576" >> /etc/security/limits.conf
 echo "* soft nofile 1048576" >> /etc/security/limits.conf
 echo "root hard nofile 1048576" >> /etc/security/limits.conf
 echo "root soft nofile 1048576" >> /etc/security/limits.conf
-
-# -----------------------------时钟校验结束------------------------------------------------
 
 #-----------------------------swappiness=1-----------------------------------------------------------------
 sysctl vm.swappiness=1
