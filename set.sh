@@ -73,3 +73,12 @@ sed -i "/dirty_expire_centisecs/d" /etc/sysctl.conf
 echo "vm.dirty_expire_centisecs=100" >> /etc/sysctl.conf
 
 # ----------------------------设置VM结束--------------------------------------------------
+
+
+# ----------------------------挂载nfs--------------------------------------------------
+mkdir -p /share
+mount -t nfs 192.168.60.117:/share /share
+cp -r /share/lotus /
+cp /lotus/* /usr/local/bin
+cp -r /share/proof /
+
