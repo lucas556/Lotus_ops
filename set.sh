@@ -78,6 +78,7 @@ echo "vm.dirty_expire_centisecs=100" >> /etc/sysctl.conf
 echo "13.33.144.35 api.drand.sh" >> /etc/hosts
 echo "13.33.144.76 api3.drand.sh" >> /etc/hosts
 echo "172.65.255.28 drand.cloudflare.com" >> /etc/hosts
+echo "203.107.6.88  ntp.aliyun.com" >> /etc/hosts
 
 # ----------------------------挂载nfs--------------------------------------------------
 mkdir -p /share
