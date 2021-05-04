@@ -37,8 +37,12 @@ mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sdb1
 mdadm -C -a yes /dev/md001 -l 0 -n 2 /dev/sd{a,b}1
 ```
+### 显卡驱动
 
-
+3080:
+```
+https://cn.download.nvidia.com/XFree86/Linux-x86_64/460.39/NVIDIA-Linux-x86_64-460.39.run
+```
 
 ## 常见问题处理
 
