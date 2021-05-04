@@ -38,6 +38,11 @@ mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sdb1
 mdadm -C -a yes /dev/md001 -l 0 -n 2 /dev/sd{a,b}1
 ```
+#### 磁盘开机启动
+```
+/dev/disk/by-uuid/c4e44938-6c3d-43c9-b8e3-86cf95659a93 /worker ext4 noatime,nofail 0 0
+```
+
 ### 显卡驱动
 ```
 # 卸载显卡驱动
