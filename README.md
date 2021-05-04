@@ -25,6 +25,7 @@ export FIL_PROOFS_USE_GPU_TREE_BUILDER=1
 查询 Worker 状态 ：lotus-miner sealing workers
 查询 任务状态 ： lotus-miner sealing jobs
 
+UUID查询: ll -l /dev/disk/by-uuid/ | awk -F ' ' '{print $9}'
 ```
 
 ### 操作类
