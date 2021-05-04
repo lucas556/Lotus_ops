@@ -38,6 +38,12 @@ mkfs.ext4 /dev/sdb1
 mdadm -C -a yes /dev/md001 -l 0 -n 2 /dev/sd{a,b}1
 ```
 ### 显卡驱动
+```
+# 卸载显卡驱动
+sudo apt-get --purge remove nvidia*
+sudo apt autoremove
+sudo apt-get --purge remove "*nvidia*"
+```
 
 3080:
 ```
