@@ -22,7 +22,7 @@ echo "nameserver 180.76.76.76" >> /etc/resolv.conf
 apt-get update
 
 # 安装依赖
-sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc gcc numactl git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor ntpdate nfs-common
+sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc ntpdate gcc numactl git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor ntpdate nfs-common
 
 # -----------------------------时钟校验------------------------------------------------
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
