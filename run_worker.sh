@@ -12,7 +12,7 @@ echo 100 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
 echo 100 | sudo tee /proc/sys/vm/dirty_expire_centisecs
 echo 100 | sudo tee /proc/sys/vm/watermark_scale_factor
 
-export WORKER_PATH="/lotusworker"
+export WORKER_PATH="/md0/worker"
 export FIL_PROOFS_PARAMETER_CACHE="/proof"
 
 export MINER_API_INFO=
