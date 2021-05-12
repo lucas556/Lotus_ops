@@ -17,6 +17,23 @@ unset USE_EXP_CACHE
 export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1
 ```
+#### supervisorctl worker.conf
+```
+[program:worker]
+command=/md0/worker/run_worker.sh
+user=root
+
+autostart=true
+autorestart=true
+stopwaitsecs=60
+startretries=999
+stopasgroup=true
+killasgroup=true
+
+redirect_stderr=true
+stdout_logfile=/md0/worker/worker.log
+stdout_logfile_maxbytes=256MB
+```
 
 ### 查询类
 
