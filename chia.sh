@@ -22,7 +22,7 @@ echo "nameserver 180.76.76.76" >> /etc/resolv.conf
 apt-get update
 
 sudo apt-get install python3.7-venv python3.7-distutils python3.7-dev git lsb-release -y
-sudo apt install -y vim git wget
+sudo apt install -y git wget
 
 cd /
 wget https://lotus-1257859707.cos.ap-beijing.myqcloud.com/chia-blockchain.tar.gz
@@ -31,3 +31,8 @@ tar zxvf chia-blockchain.tar.gz
 
 cd /chia-blockchain
 sh install.sh
+
+. ./activate
+
+pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
+plotman config generate
