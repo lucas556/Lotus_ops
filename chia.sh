@@ -37,5 +37,6 @@ sh install.sh
 pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
 plotman config generate
 
+chia init
 mkdir -p /home/chia/logs
 # plotman interactive
