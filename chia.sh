@@ -34,6 +34,15 @@ mkdir -p /chia-blockchain
 tar zxvf chia-blockchain.tar.gz
 
 cd /chia-blockchain
+
+mkdir -p ～/.pip
+  cat > ～/.pip/pip.conf << EOF
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host = pypi.tuna.tsinghua.edu.cn
+EOF
+
 sh install.sh
 
 . ./activate
