@@ -38,9 +38,13 @@ sh install.sh
 
 . ./activate
 
+chia init
+
 pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
 plotman config generate
 
-chia init
+rm -rf /root/.config/plotman/plotman.yaml
+cd /root/.config/plotman/ && wget https://lotus-1257859707.cos.ap-beijing.myqcloud.com/plotman.yaml
+
 mkdir -p /home/chia/logs
 # plotman interactive
