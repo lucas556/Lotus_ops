@@ -26,7 +26,25 @@ echo "nameserver 180.76.76.76" >> /etc/resolv.conf
 apt-get update
 
 # sudo apt-get install python3.7-venv python3.7-distutils python3.7-dev git lsb-release -y
-sudo apt install -y git wget
+sudo apt install -y git wget cpufrequtils sysfsutils
+
+# -----------------------------CPU性能模式------------------------------------------------
+sudo cpufreq-set -g performance     # 重启后无效;必须安装cpufrequtils
+echo "devices/system/cpu/cpu0/cpufreq/scaling_governor = performance" >> /etc/sysfs.conf  # 永久;必须安装sysfsutils
+
+# 设置 ulimit
+ulimit -n 1048576
+sed -i "/nofile/d" /etc/security/limits.conf
+echo "* hard nofile 1048576" >> /etc/security/limits.conf
+echo "* soft nofile 1048576" >> /etc/security/limits.conf
+echo "root hard nofile 1048576" >> /etc/security/limits.conf
+echo "root soft nofile 1048576" >> /etc/security/limits.conf
+
+#-----------------------------swappiness=1-----------------------------------------------------------------
+sysctl vm.swappiness=1
+sed -i "/swappiness/d" /etc/sysctl.conf
+echo "vm.swappiness=1" >> /etc/sysctl.conf
+#----------------------------------------------------------------------------------------
 
 cd /
 wget https://lotus-1257859707.cos.ap-beijing.myqcloud.com/chia-blockchain.tar.gz
