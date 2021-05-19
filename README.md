@@ -59,6 +59,16 @@ mdadm -C -a yes /dev/md001 -l 0 -n 2 /dev/sd{a,b}1
 ```
 /dev/disk/by-uuid/c4e44938-6c3d-43c9-b8e3-86cf95659a93 /worker ext4 noatime,nofail 0 0
 ```
+### screen
+
+```
+screen -S plotman plotman interactive
+
+screen -ls
+
+screen screen -r 2465
+```
+
 
 ### 显卡驱动
 ```
