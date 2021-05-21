@@ -26,8 +26,11 @@ echo "nameserver 180.76.76.76" >> /etc/resolv.conf
 apt-get update
 
 # sudo apt-get install python3.7-venv python3.7-distutils python3.7-dev git lsb-release -y
-sudo apt install -y git wget cpufrequtils sysfsutils
+sudo apt install -y git wget cpufrequtils sysfsutils ntpdate
 
+# -----------------------------时钟校验------------------------------------------------
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ntpdate ntp.aliyun.com
 # -----------------------------CPU性能模式------------------------------------------------
 sudo cpufreq-set -g performance     # 重启后无效;必须安装cpufrequtils
 echo "devices/system/cpu/cpu0/cpufreq/scaling_governor = performance" >> /etc/sysfs.conf  # 永久;必须安装sysfsutils
