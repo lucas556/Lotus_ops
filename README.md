@@ -64,7 +64,7 @@ linux   /boot/vmlinuz-4.15.0-106-generic root=UUID=2c5f7d8a-ff33-4c78-b5a4-cd8dc
 在Linux引导行的末尾，空格再添加 numa=off .
 
 ```
-
+linux   /boot/vmlinuz-4.15.0-147-generic root=UUID=25cacca4-31f7-441e-bb2b-aebe562a9c06 ro numa=off
 ```
 
 修改后保存，再重启系统，再验证是否成功关闭 NUMA .
@@ -72,6 +72,17 @@ linux   /boot/vmlinuz-4.15.0-106-generic root=UUID=2c5f7d8a-ff33-4c78-b5a4-cd8dc
 numastat
 ```
 如果输出结果中只有 node0，则表示成功禁用了NUMA，如果有 node1 出现则失败。
+
+```
+root@seal60162:/# numastat
+                           node0
+numa_hit                18234527
+numa_miss                      0
+numa_foreign                   0
+interleave_hit            156929
+local_node              18234484
+other_node                     0
+```
 
 #### 磁盘开机启动
 ```
