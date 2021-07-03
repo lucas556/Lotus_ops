@@ -55,6 +55,24 @@ mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sdb1
 mdadm -C -a yes /dev/md001 -l 0 -n 2 /dev/sd{a,b}1
 ```
+
+### 关闭NUMA
+Ubuntu18.04 的 grub 文件修改，编辑 /boot/grub/grub.cfg，找到 Linux 引导行，该行类似如下（不同版本内容略有差异，但开头有 linux /boot/vmlinuz-）：
+```
+linux   /boot/vmlinuz-4.15.0-106-generic root=UUID=2c5f7d8a-ff33-4c78-b5a4-cd8dc75823f3 ro  maybe-ubiquity
+```
+在Linux引导行的末尾，空格再添加 numa=off .
+
+```
+
+```
+
+修改后保存，再重启系统，再验证是否成功关闭 NUMA .
+```
+numastat
+```
+如果输出结果中只有 node0，则表示成功禁用了NUMA，如果有 node1 出现则失败。
+
 #### 磁盘开机启动
 ```
 /dev/disk/by-uuid/c4e44938-6c3d-43c9-b8e3-86cf95659a93 /worker ext4 noatime,nofail 0 0
