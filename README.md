@@ -54,6 +54,7 @@ fdisk /dev/sdb     // g n 回车 回车 wq
 mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sdb1
 mdadm -C -a yes /dev/md0 -l 0 -n 2 /dev/sd{a,b}1
+mdadm -Ds > /etc/mdadm.conf
 ```
 
 ### 关闭NUMA
