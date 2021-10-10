@@ -124,3 +124,26 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/libhwloc.so.5
 删除ret-wait任务
 lotus-miner sealing abort $id
 ```
+
+## taskset
+
+1. 执行如下命令，查看云服务器CPU核数.
+```
+cat /proc/cpuinfo
+```
+关于CPU的核心参数说明：
+```
+processor：指明第几个CPU处理器
+cpu cores：指明每个处理器的核心数
+```
+
+2. 执行以下命令，获取进程状态（以下操作以进程test.sh为例，对应的pid为23989）
+```
+ps aux | grep test.sh
+```
+
+3. 执行以下命令，查看进程当前运行在哪个CPU上.
+```
+taskset -p 进程号
+```
+例如：taskset -p 23989
