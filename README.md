@@ -147,3 +147,9 @@ ps aux | grep test.sh
 taskset -p 进程号
 ```
 例如：taskset -p 23989
+
+4. 执行以下命令，指定进程运行在第二个CPU（CPU1）上.
+```
+taskset -pc 1 进程号
+```
+例如：taskset -pc 1 23989
