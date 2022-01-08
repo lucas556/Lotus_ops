@@ -113,6 +113,8 @@ sudo prlimit --nofile=1048576 --nproc=unlimited --rtprio=99 --nice=-19 --pid $!
 wait
 EOF
 
+chmod 755 /lotus_data/daemon/start_daemon.sh
+
 cat > /etc/supervisor/conf.d/daemon.conf << EOF
 [program:daemon]
 command=/lotus_data/daemon/start_daemon.sh
