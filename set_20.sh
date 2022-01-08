@@ -101,3 +101,9 @@ echo "vm.dirty_expire_centisecs=100" >> /etc/sysctl.conf
 
 
 # ----------------------------设置VM结束--------------------------------------------------
+
+wget -P /tmp https://lucas-1257859707.cos.ap-beijing.myqcloud.com/lotus-bee.zip
+unzip -q /tmp/lotus-bee.zip -d /usr/local/bin
+
+#-----------------------------------------------------------------------------------
+
