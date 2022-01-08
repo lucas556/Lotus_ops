@@ -144,7 +144,7 @@ killasgroup=true
 priority=991
 
 redirect_stderr=true
-stdout_logfile=/lotus_data/daemon/daemon.log
+stdout_logfile=/lotus_data/log/daemon.log
 stdout_logfile_maxbytes=512MB
 stdout_logfile_backups=20
 EOF
