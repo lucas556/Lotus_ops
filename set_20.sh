@@ -43,7 +43,8 @@ apt-get update
 # 安装依赖
 # sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc gcc numactl git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor ntpdate nfs-common
 apt install -y mesa-opencl-icd ocl-icd-opencl-dev ntpdate ubuntu-drivers-common gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget
-apt install -y libclang-dev libhwloc-dev hwloc gcc numactl make pkg-config cpufrequtils sysfsutils supervisor ntpdate nfs-common unzip
+apt install -y libclang-dev libhwloc-dev hwloc gcc numactl make pkg-config cpufrequtils sysfsutils
+apt install supervisor ntpdate nfs-common unzip ntpdate -y
 
 # -----------------------------时钟校验------------------------------------------------
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
