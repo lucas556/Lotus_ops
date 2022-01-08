@@ -66,6 +66,12 @@ echo "* hard nofile 1048576" >> /etc/security/limits.conf
 echo "* soft nofile 1048576" >> /etc/security/limits.conf
 echo "root hard nofile 1048576" >> /etc/security/limits.conf
 echo "root soft nofile 1048576" >> /etc/security/limits.conf
+echo 'fs.file-max = 1048576' | sudo tee -a /etc/sysctl.conf
+echo 'net.core.somaxconn=65535' | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+
+sudo sed -i '/DefaultLimitNOFILE/c DefaultLimitNOFILE=1048576' /etc/systemd/*.conf
+sudo systemctl daemon-reexec
 
 #-----------------------------swappiness=1-----------------------------------------------------------------
 sysctl vm.swappiness=1
