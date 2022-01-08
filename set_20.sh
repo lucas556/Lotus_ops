@@ -43,7 +43,7 @@ apt-get update
 # 安装依赖
 # sudo apt install -y make pkg-config mesa-opencl-icd ocl-icd-opencl-dev libclang-dev libhwloc-dev hwloc gcc numactl git bzr jq tree openssh-server python3 cpufrequtils sysfsutils supervisor ntpdate nfs-common
 apt install -y mesa-opencl-icd ocl-icd-opencl-dev ntpdate ubuntu-drivers-common gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget
-apt install -y libclang-dev libhwloc-dev hwloc gcc numactl make pkg-config cpufrequtils sysfsutils supervisor ntpdate nfs-common
+apt install -y libclang-dev libhwloc-dev hwloc gcc numactl make pkg-config cpufrequtils sysfsutils supervisor ntpdate nfs-common unzip
 
 # -----------------------------时钟校验------------------------------------------------
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -104,6 +104,47 @@ echo "vm.dirty_expire_centisecs=100" >> /etc/sysctl.conf
 
 wget -P /tmp https://lucas-1257859707.cos.ap-beijing.myqcloud.com/lotus-bee.zip
 unzip -q /tmp/lotus-bee.zip -d /usr/local/bin
-
 #-----------------------------------------------------------------------------------
+mkdir -p /lotus_data/daemon /lotus_data/log
 
+cat >  /lotus_data/daemon/start_daemon.sh << EOF
+#!/bin/bash
+set -e
+
+sleep 10
+
+ulimit -n 1024000
+
+export RUST_BACKTRACE=full
+export RUST_LOG=info
+export GOLOG_LOG_FMT=json
+
+export LOTUS_PATH="/lotus_data/daemon"
+
+export IPFS_GATEWAY="https://proof-parameters.s3.cn-south-1.jdcloud-oss.com/ipfs/"
+export FIL_PROOFS_PARAMETER_CACHE="/var/tmp/filecoin-proof-parameters/"
+
+~/lotusbin/amd/lotus daemon &
+sudo prlimit --nofile=1048576 --nproc=unlimited --rtprio=99 --nice=-19 --pid $!
+
+wait
+EOF
+
+cat > /etc/supervisor/conf.d/daemon.conf << EOF
+[program:daemon]
+command=/lotus_data/daemon/start_daemon.sh
+user=root
+
+autostart=true
+autorestart=true
+stopwaitsecs=60
+startretries=100
+stopasgroup=true
+killasgroup=true
+priority=991
+
+redirect_stderr=true
+stdout_logfile=/lotus_data/daemon/daemon.log
+stdout_logfile_maxbytes=512MB
+stdout_logfile_backups=20
+EOF
