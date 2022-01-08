@@ -1,9 +1,6 @@
 #!/bin/bash
 
 mv /etc/apt/sources.list /etc/apt/sourses.list.backup
-# 判断系统版本
-release=`lsb_release -r --short`
-if [ release -eq '18.04' ] ; then
     cat > /etc/apt/sources.list << EOF
 ##阿里源 18.04
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
@@ -17,22 +14,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted univers
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
 EOF
-
-elif [ release -eq '20.04' ] ; then
-    cat > /etc/apt/sources.list << EOF
-##阿里源 20.04
-deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
-EOF
-fi
 
 #----------------------设置DNS-------------------------------
 echo "nameserver 119.29.29.29" >> /etc/resolv.conf
