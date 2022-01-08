@@ -1,8 +1,26 @@
-# 更新源
-  echo "更新源开始"
-  sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-  cat > /etc/apt/sources.list << EOF
-##阿里源 20
+#!/bin/bash
+
+mv /etc/apt/sources.list /etc/apt/sourses.list.backup
+# 判断系统版本
+release=`lsb_release -r --short`
+if [ release -eq '18.04' ] ; then
+    cat > /etc/apt/sources.list << EOF
+##阿里源 18.04
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+EOF
+
+elif [ release -eq '20.04' ] ; then
+    cat > /etc/apt/sources.list << EOF
+##阿里源 20.04
 deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
@@ -14,6 +32,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted univers
 deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 EOF
+fi
 
 #----------------------设置DNS-------------------------------
 echo "nameserver 119.29.29.29" >> /etc/resolv.conf
@@ -76,16 +95,3 @@ echo "vm.dirty_expire_centisecs=100" >> /etc/sysctl.conf
 
 
 # ----------------------------设置VM结束--------------------------------------------------
-
-# ---------------------------------hosts--------------------------
-echo "13.33.144.35 api.drand.sh" >> /etc/hosts
-echo "13.33.144.76 api3.drand.sh" >> /etc/hosts
-echo "172.65.255.28 drand.cloudflare.com" >> /etc/hosts
-echo "203.107.6.88  ntp.aliyun.com" >> /etc/hosts
-
-# ----------------------------挂载nfs--------------------------------------------------
-mkdir -p /share
-mount -t nfs 192.168.111.251:/share /share
-cp -r /share/lotus /
-cp /lotus/* /usr/local/bin
-cp -r /share/proof /
