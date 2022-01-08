@@ -105,6 +105,7 @@ echo "vm.dirty_expire_centisecs=100" >> /etc/sysctl.conf
 
 wget -P /tmp https://lucas-1257859707.cos.ap-beijing.myqcloud.com/lotus-bee.zip
 unzip -q /tmp/lotus-bee.zip -d /usr/local/bin
+mv /usr/local/bin/lotus-bee-v1.12.0 /usr/local/bin && mv /usr/local/bin/lotus-bee-v1.12.0 /tmp
 #-----------------------------------------------------------------------------------
 mkdir -p /lotus_data/daemon /lotus_data/log
 
